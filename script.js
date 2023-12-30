@@ -28,6 +28,41 @@ function getNewText(ballId) {
             return '';
     }
 }
+balls.forEach(ball => {
+    // 添加鼠标悬停事件
+    ball.addEventListener('mouseover', function() {
+        handleHoverEffect(ball);
+    });
+
+    // 添加触摸事件，模拟鼠标悬停效果
+    ball.addEventListener('touchstart', function(event) {
+        event.preventDefault(); // 防止触摸事件的默认行为
+        handleHoverEffect(ball);
+    });
+
+    // 添加鼠标离开事件
+    ball.addEventListener('mouseleave', function() {
+        handleLeaveEffect(ball);
+    });
+
+    // 添加触摸事件，模拟鼠标离开效果
+    ball.addEventListener('touchend', function(event) {
+        event.preventDefault(); // 防止触摸事件的默认行为
+        handleLeaveEffect(ball);
+    });
+});
+
+function handleHoverEffect(ball) {
+    ball.style.transform = 'scale(2)';
+    ball.style.animation = 'pulse 1s infinite'; // 添加脉动效果
+    ball.textContent = getNewText(ball.id);
+}
+
+function handleLeaveEffect(ball) {
+    ball.style.transform = 'scale(1)';
+    ball.style.animation = 'none';
+    ball.textContent = getOriginalText(ball.id);
+}
 
 function getOriginalText(ballId) {
     switch(ballId) {

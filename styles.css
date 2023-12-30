@@ -19,6 +19,17 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
 }
+@keyframes pulse {
+    0% {
+        transform: scale(2);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(2);
+    }
+}
 
 #ball1 {
     background-color: green;
